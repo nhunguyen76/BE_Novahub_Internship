@@ -19,7 +19,7 @@
 	<%@ include file="sidebarLeft.jsp" %>
 		<div class="col-md-10">
 			<div class="panel panel-default">
- 		 		<div class="panel-body contentPage">
+ 		 		<div class="panel-body " id="contentPage">
  		 			<h1>Danh sách nhân viên</h1>
  		 			
  		 			<a class="btn btn-md btn-primary" href="${pageContext.request.contextPath}/admin/staff/addForm">

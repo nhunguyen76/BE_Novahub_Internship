@@ -17,6 +17,11 @@ h1.page-header {
 .footer {
     width: 100%;
 }  
-.contentPage{
-	background-color: yellow;
+#contentPage{
+	
+}
+
+.formEdit {
+  /* Just to center the form on the page */
+  margin: 0 auto;
 }

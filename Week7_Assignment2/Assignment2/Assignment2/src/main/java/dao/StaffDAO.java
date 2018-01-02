@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -73,5 +74,33 @@ public class StaffDAO {
       e.printStackTrace();
   }
   return null;
+  }
+  
+  public static int editStaffInfo(Staff staff) {
+    sql = "update staff set Name=?, BirthYear=?, Country=?, " + 
+        "Department=?, Position=?,WorkDays=?, " + 
+        "Allowance=?,CoefficientSalary=?   where StaffId = "+staff.getStaffId();
+    ConnectionManager connectionManager = ConnectionManager.getInstance();
+    PreparedStatement ps = null;
+    int status = 0;
+    try {
+      currentCon = connectionManager.getConnection();
+      ps = currentCon.prepareStatement(sql);
+      ps.setString(1,staff.getName());
+      ps.setString(2,Integer.toString(staff.getBirthYear()));
+      ps.setString(3,staff.getCountry());
+      ps.setString(4,staff.getDepartment());
+      ps.setString(5,staff.getPosition());
+      ps.setString(6,Integer.toString(staff.getWorkDays()));
+      ps.setString(7,Integer.toString(staff.getAllowance()));
+      ps.setString(8,Float.toString(staff.getCoefficientSalary()));
+      status = ps.executeUpdate();
+      return status;
+    }catch(SQLException ex) {
+      System.out.println(ex);
+    }catch(NullPointerException e) {
+      e.printStackTrace();
+    }
+    return status;
   }
 }
